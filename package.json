@@ -2,7 +2,7 @@
   "name": "fswd-todolist",
   "private": true,
   "engines": {
-    "node": "18.7.14",
+    "node": "16.17.0",
     "yarn": "1.22.18"
   },
   "dependencies": {
