@@ -1068,8 +1068,8 @@
   integrity sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==
 
 "@types/node@*":
-  version "16.14.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.14.2 tgz#0fe081752a3333392d00586d815485a17c2cf3c9"
+  version "~16.14.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.4 tgz#0fe081752a3333392d00586d815485a17c2cf3c9"
   integrity sha512-6bbDaETVi8oyIARulOE9qF1/Qdi/23z6emrUh0fNJRUmjznqrixD4MpGDdgOFk5Xb0m2H6Xu42JGdvAxaJR/wA==
 
 "@types/parse-json@^4.0.0":
