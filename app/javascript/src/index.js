@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import { indexTasks, postTask } from "./requests.js";
+import { indexTasks, postTask, newTask } from "./requests.js";
 
 indexTasks(response => {
     let htmlString = response.tasks.map(task => {
@@ -8,4 +8,3 @@ indexTasks(response => {
     })
     $("#tasks").html(htmlString);
 });
-
