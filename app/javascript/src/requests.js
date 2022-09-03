@@ -34,6 +34,18 @@ export const postTask = (content, successCB, errorCB)  => {
     $.ajax(request);
 };
 
+export const deleteTask = (taskid, successCB, errorCB) => {
+    let request = {
+        type: 'DELETE',
+        url: 'api/tasks' + taskid + '?api_key=1',
+        success: successCB,
+        error: errorCB,
+    }
+
+    $.ajax(request);
+    location.reload();
+};
+
 
 
 
