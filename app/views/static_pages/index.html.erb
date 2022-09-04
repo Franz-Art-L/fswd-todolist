@@ -3,20 +3,42 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center mt-4">To Do List</div>
-                <div id="todo-list-wrapper">
-                    <form class="ml-auto" id="addTask">
-                    <input id="newRequest" type="text" placeholder="Things needed to do">
+            <h1 class="text-center mt-4">To Do List</h1>
+           
+                    <div id="todo-list-wrapper">
 
-                    <button class="btn btn-warning" title="click to add new task"> ➕</button>
-                    </form>
-                    
-                    <br>
+                        <form class="ml-auto" id="addTask">
+                            <input id="newRequest" type="text" placeholder="Things needed to do">
 
-                    <div class="row" id="tasks"></div> 
-                    
-                  
+                            <button class="btn btn-warning" title="click to add new task"> ➕</button>
+                        </form>
+                        
+                        <br>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row overflow d-flex justify-content-center" id="tasks">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                <br>
+        <div class="ml-auto">
+            <div class="todo-filter-wrapper d-flex p-3 justify-content-between">
+
+                <div class="to-do-amount my-0" title="remaining task not yet done"><span class="text-center" id="taskLeft" title="remaining task not yet done">2</span> tasks left
                 </div>
+
+                <div class="to-do-filter d-flex my-0 justify-content-center">
+                    <button class="btn filter-button active" id="all" title="Click to show all tasks">All</button>
+                    <button class="btn filter-button" id="active" title="Click to show all active tasks">Active</button>
+                    <button class="btn filter-button" id="completed" title="Click to show all completed tasks">Completed</button>
+                </div>
+
+            </div>
+        </div>
+
         </div>
     </div>
 </div>
