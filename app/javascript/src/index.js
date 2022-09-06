@@ -2,12 +2,18 @@ import $, { event } from 'jquery';
 
 import { indexTasks, postTask, deleteTask, markComplete, markActive } from "./requests.js";
 
-indexTasks(response => {
-    let htmlString = response.tasks.map(task => {
-        return '<div id="taskList" class="d-flex col-12 justify-content-between">' + '<input class="p-2 mark-complete"type="checkbox"  title="Check the box if task is done" data-id="' + task.id + '"' + (task.completed ? 'checked' : '') + '>' + '<div class="mr-auto p-2" id="li-text">' + task.content + '</div>' + "<button class='btn btn-danger' id='taskButton' data-id='" + task.id + "'title='click to remove task'>" + 'remove' + '</button>' + '</div>' + '</br>' + '<hr>';
-    })
-    $("#tasks").html(htmlString);
-});
+let loadAllTask = () => {
+
+    indexTasks(response => {
+        let htmlString = response.tasks.map(task => {
+                    return ("<div class='d-flex justify-content-between'>" + "<tr> <td><input class='form-check-input' type='checkbox' title='check the box if the task is done' data-id='"+ task.id + "' checked></td> <td id='task-content' data-id='" + task.id + "' class='task'>" + task.content + "</td> <td><button class='btn btn-dark' id ='removeTask' data-id ='" + task.id + "' title='click to remove task'>❌</button></td></tr></div><br>")
+                
+        });
+        $("#tasks").html(htmlString);
+    });
+
+}
+
 
 
 /* old task component incase you want it back
@@ -16,15 +22,28 @@ indexTasks(response => {
 
 */
 
+
 // post task
-$(document).on('click', '#addTask', event => {
-    let input = $('#newRequest').val();
-    postTask(input);
-});
+$(document).ready(() => {
+    $('#addTask').on('submit', event => {
+        event.preventDefault();
+        postTask($('#taskInput').val(), loadAllTask());
+        $('#taskInput').val('');
+    })
+})
 
 // delete task
-$(document).on('click', '#taskButton', event => {
-    let taskid = $(this).attr('data-id');
-    deleteTask(taskid);
+$(document).on('click', '#removeTask', event => {
+    deleteTask($(this).data('id'), loadAllTask());
 });
 
+// task mark active event handler
+$(document).on('click', ".form-check-input", event => {
+    if(this.checked) {
+        markComplete($(this).data('data-id'), loadAllTask());
+    } else {
+        markActive($(this).data('data-id'), loadAllTask());
+    }
+});
+
+loadAllTask();

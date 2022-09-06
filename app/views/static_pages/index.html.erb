@@ -5,39 +5,25 @@
         <div class="col-12">
             <h1 class="text-center mt-4">To Do List</h1>
            
+                        <div>
+                            <form id="addTask" class="form-style"> 
+                                <input  id="taskInput"  type="text" placeholder="Things need to be done" required/>
+                                <button id="addTaskButton" class="btn btn-success btn-md btn-add" title="click to add task">➕</button>
+                            </form>
+                        </div>
+                <br>
                     <div id="todo-list-wrapper">
 
-                        <form class="ml-auto" id="addTask">
-                            <input id="newRequest" type="text" placeholder="Things needed to do">
-
-                            <button class="btn btn-warning" title="click to add new task"> ➕</button>
-                        </form>
+                       <table class="table table-responsive">
+                        <tbody id="tasks">
+                        </tbody>
+                        </table>
+                        <div class="col-xs-12 d-flex justify-content-around">
                         
-                        <br>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row overflow d-flex justify-content-center" id="tasks">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 
                 <br>
-        <div class="ml-auto">
-            <div class="todo-filter-wrapper d-flex p-3 justify-content-between">
-
-                <div class="to-do-amount my-0" title="remaining task not yet done"><span class="text-center" id="taskLeft" title="remaining task not yet done">2</span> tasks left
-                </div>
-
-                <div class="to-do-filter d-flex my-0 justify-content-center">
-                    <button class="btn filter-button active" id="all" title="Click to show all tasks">All</button>
-                    <button class="btn filter-button" id="active" title="Click to show all active tasks">Active</button>
-                    <button class="btn filter-button" id="completed" title="Click to show all completed tasks">Completed</button>
-                </div>
-
-            </div>
-        </div>
+        
 
         </div>
     </div>

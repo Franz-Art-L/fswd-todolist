@@ -32,25 +32,27 @@ export const postTask = (content, successCB, errorCB)  => {
     }
 
     $.ajax(request);
+    
 };
 
-export const deleteTask = function (taskid, successCB, errorCB) {
+export const deleteTask = (id, successCB, errorCB) => {
     var request = {
       type: 'DELETE',
-      url: 'api/tasks/' + taskid + '?api_key=1',
+      url: `api/tasks/${id}?api_key=1`,
       success: successCB,
       error: errorCB
     }
     
     $.ajax(request);
-    location.reload();
+    console.log(id);
+
   };
   
 
-export const markComplete = (taskid, successCB, errorCB) => {
+export const markComplete = (id, successCB, errorCB) => {
     let request = {
         type: 'PUT',
-        url: 'api/tasks' + taskid + 'mark_complete?api_key=1',
+        url: `api/tasks/${id}mark_complete?api_key=1`,
         data: {
             task: {
                 completed: true,
@@ -61,12 +63,13 @@ export const markComplete = (taskid, successCB, errorCB) => {
     }
 
     $.ajax(request);
+    
 };
 
-export const markActive = (taskid, successCB, errorCB) => {
+export const markActive = (id, successCB, errorCB) => {
     let request = {
         type: 'PUT',
-        url: 'api/tasks' + taskid + 'mark_active?api_key=1',
+        url: 'api/tasks/${id}mark_active?api_key=1',
         data: {
             task: {
                 completed: false,
@@ -76,7 +79,8 @@ export const markActive = (taskid, successCB, errorCB) => {
         error: errorCB
     }
 
-    $.ajax(request);    
+    $.ajax(request);
+
 }
 
 
