@@ -35,6 +35,7 @@ $(document).ready(() => {
         event.preventDefault();
         postTask($('#taskInput').val(), loadAllTask());
         $('#taskInput').val('');
+        location.reload();
     })
 
     // delete task
