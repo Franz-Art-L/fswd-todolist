@@ -6,8 +6,14 @@ let loadAllTask = () => {
 
     indexTasks(response => {
         let htmlString = response.tasks.map(task => {
-                    return ("<div class='d-flex justify-content-between'>" + "<tr> <td><input class='form-check-input' type='checkbox' title='check the box if the task is done' data-id='"+ task.id + "' checked></td> <td id='task-content' data-id='" + task.id + "' class='task'>" + task.content + "</td> <td><button class='btn btn-dark' id ='removeTask' data-id ='" + task.id + "' title='click to remove task'>❌</button></td></tr></div><br>")
-                
+
+            if(task.completed) {
+                return ("<div class='d-flex justify-content-between'>" + "<tr id='taskRow'> <td><input class='form-check-input' type='checkbox' title='check the box if the task is done' data-id='"+ task.id + "' checked></td> <td id='task-content' data-id='" + task.id + "' class='task'>" + task.content + "</td> <td><button class='btn btn-dark' id ='removeTask' data-id ='" + task.id + "' title='click to remove task'>❌</button></td></tr></div><br>")
+            
+            } else if (!task.completed) {
+                return ("<div class='d-flex justify-content-between'>" + "<tr id='taskRow'> <td><input class='form-check-input' type='checkbox' title='check the box if the task is done' data-id='"+ task.id + "'></td> <td id='task-content' data-id='" + task.id + "' class='task'>" + task.content + "</td> <td><button class='btn btn-dark' id ='removeTask' data-id ='" + task.id + "' title='click to remove task'>❌</button></td></tr></div><br>")
+            }
+                      
         });
         $("#tasks").html(htmlString);
     });
@@ -30,20 +36,24 @@ $(document).ready(() => {
         postTask($('#taskInput').val(), loadAllTask());
         $('#taskInput').val('');
     })
+
+    // delete task
+$(document).on('click', '#removeTask', () => {
+    let taskItem = $('#taskRow').attr('data-id');
+    deleteTask(taskItem)
+      });
+    
+  // task mark active event handler
+   $(document).on('click', '.form-check-input', () => {
+      let checkbox = $(this).attr('data-id');
+      if($(this).is(':checked')) {
+          markComplete(checkbox);
+      } else {
+          markActive(checkbox);
+      }
+   })
+  
+  loadAllTask();
+
 })
 
-// delete task
-$(document).on('click', '#removeTask', event => {
-    deleteTask($(this).data('id'), loadAllTask());
-});
-
-// task mark active event handler
-$(document).on('click', ".form-check-input", event => {
-    if(this.checked) {
-        markComplete($(this).data('data-id'), loadAllTask());
-    } else {
-        markActive($(this).data('data-id'), loadAllTask());
-    }
-});
-
-loadAllTask();

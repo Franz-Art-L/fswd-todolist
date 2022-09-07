@@ -36,7 +36,7 @@ export const postTask = (content, successCB, errorCB)  => {
 };
 
 export const deleteTask = (id, successCB, errorCB) => {
-    var request = {
+    let request = {
       type: 'DELETE',
       url: `api/tasks/${id}?api_key=1`,
       success: successCB,
@@ -44,8 +44,7 @@ export const deleteTask = (id, successCB, errorCB) => {
     }
     
     $.ajax(request);
-    console.log(id);
-
+    
   };
   
 
@@ -69,7 +68,7 @@ export const markComplete = (id, successCB, errorCB) => {
 export const markActive = (id, successCB, errorCB) => {
     let request = {
         type: 'PUT',
-        url: 'api/tasks/${id}mark_active?api_key=1',
+        url: `api/tasks/${id}mark_active?api_key=1`,
         data: {
             task: {
                 completed: false,
