@@ -63,7 +63,7 @@
         private
       
         def task_params
-          params.require(:task).permit(:content, :due)
+          params.require(:task).permit(:content, :completed, :due)
         end
       
         def validate_user
