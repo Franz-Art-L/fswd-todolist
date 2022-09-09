@@ -81,6 +81,3 @@ export const markActive = (id, successCB, errorCB) => {
     $.ajax(request);
 
 }
-
-
-
